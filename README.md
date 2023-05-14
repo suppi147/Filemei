@@ -20,6 +20,6 @@
 - frontend
     - simple upload file box
 - Backend
-    - upload and store file upload
+    - upload, download and store file upload
 ### Sample
 
