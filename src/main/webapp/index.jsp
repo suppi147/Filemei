@@ -1,19 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Welcome</title>
-</head>
-<body>
-    <h1>Hiiiii</h1>
-    <p>Please enter your name below:</p>
-    <form action="greeting.jsp" method="post">
-        <input type="text" name="name" placeholder="Enter your name">
+    <!DOCTYPE html>
+    <html>
+    <body>
     
-
-        <input type="submit" value="Submit">
+    <form action="upload.jsp" method="post" enctype="multipart/form-data">
+      Select image to upload:
+      <input type="file" name="fileToUpload" id="fileToUpload">
+      <input type="submit" value="Upload Image" name="submit">
     </form>
-</body>
-</html>
+    
+    </body>
+    </html>
+    
