@@ -1,5 +1,4 @@
 # Filemei
-# Filemei
 
 ### Introduction
 - Filemei is an online file upload system with time expired period.
