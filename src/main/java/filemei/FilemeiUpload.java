@@ -28,11 +28,13 @@ public class FilemeiUpload extends HttpServlet {
 				String fileName = extractFileName(part);
 				// refines the fileName in case it is an absolute path
 				fileName = new File(fileName).getName();
-				
-				part.write(this.getFolderUpload().getAbsolutePath() + File.separator + fileName);
-				response.getWriter().print("upload success.");	
-				break;
-			  }	
+				if(!fileName.isEmpty()){
+					part.write(this.getFolderUpload().getAbsolutePath() + File.separator + fileName);
+					response.getWriter().print("upload success.");
+					request.setAttribute("filename", fileName);
+					getServletContext().getRequestDispatcher("/download.jsp").forward(request, response);
+				}
+			  }
 		} catch (Exception e) {
 			response.getWriter().print("upload failed.");
 		}
