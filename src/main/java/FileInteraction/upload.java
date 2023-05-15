@@ -1,4 +1,4 @@
-package FIleInteraction;
+package FileInteraction;
 
 import javax.servlet.http.HttpServlet;
 import java.io.*;
@@ -6,7 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "FilemeiUpload", urlPatterns = { "/FilemeiUpload" })
+@WebServlet(name = "upload", urlPatterns = { "/upload" })
 @MultipartConfig(
   fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
   maxFileSize = 1024 * 1024 * 10,      // 10 MB
@@ -16,7 +16,7 @@ import javax.servlet.annotation.*;
 /**
  * Servlet implementation class FilemeiUpload
  */
-public class FilemeiUpload extends HttpServlet {
+public class upload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +32,7 @@ public class FilemeiUpload extends HttpServlet {
 					part.write(this.getFolderUpload().getAbsolutePath() + File.separator + fileName);
 					response.getWriter().print("upload success.");
 					request.setAttribute("filename", fileName);
-					getServletContext().getRequestDispatcher("/download.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("/downloads/index.jsp").forward(request, response);
 				}
 			  }
 		} catch (Exception e) {

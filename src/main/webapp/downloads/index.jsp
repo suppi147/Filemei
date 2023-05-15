@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
-    <html lang="en">
+<%@ page language="java" contentType="text/html"%>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
 
@@ -23,23 +21,20 @@
 <div class="wrapper">
   <div class="container">
     <h1>filemei</h1>
-    <p>Upload as many files as you like up to <strong>1 GB</strong> and get a link to share📦</p>
-    <div class="upload-container">
-      <div class="border-container">
-        <div class="icons fa-4x">
-          <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
-          <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
-          <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
-        </div>
-          
-          <form id="FilemeiUpload" action="http://localhost:8080/filemei-1.0/upload" method="post" enctype="multipart/form-data" class="hidden">
-            <input type="file" name="fileToUpload" id="fileToUpload">
-          </form>
+    <p>The link will be timeout in <strong>1 hour</strong> so take your time⏳</p>
+    <div>
+       <!-- The text field -->
+       <div class="copy-text">    
+        <input disabled="disabled" type="text" class="textbox" value="http://localhost:8080/filemei-1.0/download?filename=${requestScope.filename}" id="myInput">
+        <button onclick="copy()" ><i class="fa fa-clone" ></i></button>
       </div>
     </div>
-    <button class="button-one" type="submit" form="FilemeiUpload">Upload</button>
+    <form id="FilemeiDownload" action="http://localhost:8080/filemei-1.0/download" method="get">
+      <input type="hidden" name="filename" value="${requestScope.filename}" >
+      <button class="button-two" type="submit" form="FilemeiDownload" >Download</button>
+    </form>
+    
   </div>
 </div>
 </body>
 </html>
-    

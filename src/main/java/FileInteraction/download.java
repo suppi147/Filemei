@@ -1,4 +1,4 @@
-package filemei;
+package FileInteraction;
  
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "FilemeiDownload", urlPatterns = { "/FilemeiDownload" })
-public class FilemeiDownload extends HttpServlet {
+@WebServlet(name = "download", urlPatterns = { "/download" })
+public class download extends HttpServlet {
  
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // reads input file from an absolute path
 
-        String filePath = request.getParameter("filename");
-		if(!filePath.isEmpty()){
-			File downloadFile = new File("/var/lib/tomcat9/webapps/Uploads/"+filePath);
+        String filename = request.getParameter("filename");
+		if(!filename.isEmpty()){
+			File downloadFile = new File("/var/lib/tomcat9/webapps/Uploads/"+filename);
 			FileInputStream inStream = new FileInputStream(downloadFile);
 			
 			// if you want to use a relative path to context root:
@@ -32,7 +32,7 @@ public class FilemeiDownload extends HttpServlet {
 			ServletContext context = getServletContext();
 			
 			// gets MIME type of the file
-			String mimeType = context.getMimeType(filePath);
+			String mimeType = context.getMimeType(filename);
 			if (mimeType == null) {        
 				// set to binary type if MIME mapping not found
 				mimeType = "application/octet-stream";
@@ -45,7 +45,7 @@ public class FilemeiDownload extends HttpServlet {
 			
 			// forces download
 			String headerKey = "Content-Disposition";
-			String headerValue = String.format("attachment; filename="+filePath);
+			String headerValue = String.format("attachment; filename="+filename);
 			response.setHeader(headerKey, headerValue);
 			
 			// obtains response's output stream
