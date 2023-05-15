@@ -20,8 +20,10 @@
 <body>
 <div class="wrapper">
   <div class="container">
-    <h1>filemei</h1>
-    <p>The link will be timeout in <strong>1 hour</strong> so take your time⏳</p>
+    <a href="http://localhost:8080/filemei-1.0/home/" style="text-decoration: none;">
+      <h1>filemei</h1>
+    </a>
+    <p>The link will be timeout in <strong>1 hour</strong> so take your time&#9203;</p>
     <div>
        <!-- The text field -->
        <div class="copy-text">    

@@ -2,15 +2,16 @@ package FileInteraction;
 
 import javax.servlet.http.HttpServlet;
 import java.io.*;
+import java.util.Collection;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(name = "upload", urlPatterns = { "/upload" })
 @MultipartConfig(
-  fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
-  maxFileSize = 1024 * 1024 * 10,      // 10 MB
-  maxRequestSize = 1024 * 1024 * 100   // 100 MB
+  maxFileSize = 1024 * 1024 * 1024,      // 1 GB
+  maxRequestSize = 1024 * 1024 * 1024   // 1 GB
 )
 
 /**
@@ -22,9 +23,10 @@ public class upload extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		/* Receive file uploaded to the Servlet from the HTML5 form */
-		
+        
 		try {
 			for (Part part : request.getParts()) {
+                
 				String fileName = extractFileName(part);
 				// refines the fileName in case it is an absolute path
 				fileName = new File(fileName).getName();
@@ -34,6 +36,10 @@ public class upload extends HttpServlet {
 					request.setAttribute("filename", fileName);
 					getServletContext().getRequestDispatcher("/downloads/index.jsp").forward(request, response);
 				}
+                else{
+                    response.sendRedirect("http://localhost:8080/filemei-1.0/home/");
+                    return;
+                }
 			  }
 		} catch (Exception e) {
 			response.getWriter().print("upload failed.");

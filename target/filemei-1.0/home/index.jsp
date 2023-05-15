@@ -22,8 +22,10 @@
 <body>
 <div class="wrapper">
   <div class="container">
-    <h1>filemei</h1>
-    <p>Upload as many files as you like up to <strong>1 GB</strong> and get a link to share📦</p>
+    <a href="#" style="text-decoration: none;">
+      <h1>filemei</h1>
+    </a>
+    <p>Upload as many files as you like up to <strong>1 GB</strong> and get a link to share&#128230;</p>
     <div class="upload-container">
       <div class="border-container">
         <div class="icons fa-4x">
