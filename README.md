@@ -10,9 +10,9 @@
 
 ### Technology used
 - Backend
-    - Java
+    - Java Servlet
 - Frontend
-    - Html, css
+    - JSP, CSS
 - Database
     - MySQL
 
