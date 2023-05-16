@@ -40,5 +40,9 @@ public class FileController{
 		}
 		return folderUpload;
 	  }
+
+    public void FindAbsolutePath(){
+      this.absolutePath=this.getFolderUpload().getAbsolutePath() + File.separator + this.filename;
+    }
 }
     

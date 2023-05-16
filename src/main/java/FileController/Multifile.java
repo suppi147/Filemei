@@ -1,6 +1,5 @@
 package FileController;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.*;
@@ -11,6 +10,7 @@ public class Multifile {
     protected Part oneFileDock;
     FilemeiDownload download;
     FilemeiUpload upload;
+    FIlemeiZipper zip;
     
     public Multifile(){
         this.numberOfFile=0;
@@ -18,6 +18,7 @@ public class Multifile {
         this.oneFileDock=null;
         this.download=new FilemeiDownload();
         this.upload=new FilemeiUpload();
+        this.zip=new FIlemeiZipper();
     }
     public String GetDownloadFilename(){
         return this.upload.filename;
@@ -39,6 +40,13 @@ public class Multifile {
                         upload.Upload(FileDock);        
                     }
                 }
+                if(numberOfFile>1){
+                    try {
+                        this.zip.Zipper(fileContainers);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } 
                 return true;
             }     
         }

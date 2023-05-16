@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 public class FilemeiDownload extends FileController{
     public void Download(HttpServletResponse response,String mimeType) throws IOException{  
         if(!this.filename.isEmpty()){
-          this.absolutePath=this.getFolderUpload().getAbsolutePath() + File.separator + this.filename;
-            downloadFile=new File(absolutePath);
+          this.FindAbsolutePath();
+            downloadFile=new File(this.absolutePath);
            
   
               // modifies response
