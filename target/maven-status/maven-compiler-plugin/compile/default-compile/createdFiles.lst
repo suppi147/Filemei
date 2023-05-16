@@ -1,4 +1,6 @@
 FileController/Multifile.class
 FileInteraction/download.class
+FileController/FilemeiUpload.class
+FileController/FilemeiDownload.class
 FileController/FileController.class
 FileInteraction/upload.class

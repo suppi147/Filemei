@@ -1,43 +1,53 @@
 package FileController;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.*;
 
-public class Multifile extends FileController {
+public class Multifile {
     protected ArrayList<String> filenamelist;
     protected int numberOfFile;
     protected Part oneFileDock;
+    FilemeiDownload download;
+    FilemeiUpload upload;
     
     public Multifile(){
         this.numberOfFile=0;
         this.filenamelist=new ArrayList<String>();
         this.oneFileDock=null;
+        this.download=new FilemeiDownload();
+        this.upload=new FilemeiUpload();
+    }
+    public String GetDownloadFilename(){
+        return this.upload.GetFilename();
     }
 
-    public boolean MultifileUpload(Collection<Part> fileContainers){
-        
+    public boolean MultifileUpload(Collection<Part> fileContainers,PrintWriter out){        
         if(!fileContainers.isEmpty()){
             for (Part fileDock : fileContainers) {
-                super.extractFileName(fileDock);
-                if(!(super.GetFilename().isEmpty()))
+                upload.extractFileName(fileDock);
+                if(!(upload.GetFilename().isEmpty()))
                     numberOfFile++;
                 else 
                     break;
             }
-            if(numberOfFile==1){
-                this.oneFileDock= fileContainers.iterator().next();
-                super.extractFileName(oneFileDock);
-                super.FilemeiUpload(oneFileDock);
+            if(numberOfFile>0){
+                for (Part FileDock : fileContainers) {
+                    if(FileDock!=null){
+                        upload.extractFileName(FileDock);
+                        upload.Upload(FileDock);        
+                    }
+                }
                 return true;
-            }
+            }     
         }
         return false;
     }
     public void MultifileDownload(HttpServletResponse response,String mimeType, String filename){
-        super.SetFilename(filename);
+        download.SetFilename(filename);
         try {
-            super.FilemeiDownload(response, mimeType);
+            download.Download(response, mimeType);
         } catch (IOException e) {
             e.printStackTrace();
         }

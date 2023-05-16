@@ -25,9 +25,9 @@ public class upload extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Multifile multifiler= new Multifile();
-
-        if(multifiler.MultifileUpload(request.getParts())){
-            request.setAttribute("filename", multifiler.GetFilename());
+        PrintWriter out= response.getWriter();
+        if(multifiler.MultifileUpload(request.getParts(),out)){
+            request.setAttribute("filename", multifiler.GetDownloadFilename());
 					getServletContext().getRequestDispatcher(FileController.downloadPath).forward(request, response);
         }
         else{

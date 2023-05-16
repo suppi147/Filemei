@@ -35,7 +35,7 @@
         </div>
           
           <form id="FilemeiUpload" action="http://localhost:8080/filemei-1.0/upload" method="post" enctype="multipart/form-data" class="hidden">
-            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="file" name="fileToUpload" id="fileToUpload" multiple>
           </form>
       </div>
     </div>
