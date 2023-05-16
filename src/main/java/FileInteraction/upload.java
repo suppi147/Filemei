@@ -1,8 +1,11 @@
 package FileInteraction;
 
+import FileController.FileController;
+import FileController.Multifile;
+
+
 import javax.servlet.http.HttpServlet;
 import java.io.*;
-import java.util.Collection;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -21,9 +24,18 @@ public class upload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Multifile multifiler= new Multifile();
 
+        if(multifiler.MultifileUpload(request.getParts())){
+            request.setAttribute("filename", multifiler.GetFilename());
+					getServletContext().getRequestDispatcher(FileController.downloadPath).forward(request, response);
+        }
+        else{
+            response.sendRedirect(FileController.homePath);
+            return;
+        }
 		/* Receive file uploaded to the Servlet from the HTML5 form */
-        
+        /*
 		try {
 			for (Part part : request.getParts()) {
                 
@@ -44,7 +56,7 @@ public class upload extends HttpServlet {
 		} catch (Exception e) {
 			response.getWriter().print("upload failed.");
 		}
-		
+		 */
 		  
 	  }
 	  private String extractFileName(Part part) {
