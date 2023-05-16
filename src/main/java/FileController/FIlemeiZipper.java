@@ -22,6 +22,7 @@ public class FIlemeiZipper extends FileController {
         this.filesToZip=new ArrayList<String>();
         this.zipfilename=UUID.randomUUID().toString()+".zip";
     }
+
     public void Zipper(Collection<Part> fileContainers) throws IOException{
         if(!fileContainers.isEmpty()){
             for (Part FileDock : fileContainers) {
