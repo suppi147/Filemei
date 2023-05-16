@@ -34,8 +34,10 @@ public class Multifile {
                 else 
                     break;
             }
-                for (Part FileDock : fileContainers) {
-                    if(FileDock!=null){
+            if(numberOfFile==0)
+                return false;
+            for (Part FileDock : fileContainers) {
+                if(FileDock!=null){
                         upload.extractFileName(FileDock);
                         upload.Upload(FileDock);        
                     }
@@ -47,8 +49,7 @@ public class Multifile {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                }
-                
+                }    
                 return true;
                  
         }

@@ -22,10 +22,10 @@ public class upload extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Multifile multifiler= new Multifile();
-        //PrintWriter out= response.getWriter();
+        
         if(multifiler.MultifileUpload(request.getParts())){
             request.setAttribute("filename", multifiler.GetDownloadFilename());
-					getServletContext().getRequestDispatcher(FileController.downloadPath).forward(request, response);
+					  getServletContext().getRequestDispatcher(FileController.downloadPath).forward(request, response);
         }
         else{
             response.sendRedirect(FileController.notFoundLink);
