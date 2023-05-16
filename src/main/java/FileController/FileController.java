@@ -12,8 +12,9 @@ import javax.servlet.http.*;
 public class FileController{
 
     public static final String defaultPath = "/var/lib/tomcat9/webapps/Uploads";
-    public static final String homePath = "http://localhost:8080/filemei-1.0/home/";
     public static final String downloadPath = "/downloads/index.jsp";
+    public static final String homeLink = "http://localhost:8080/filemei-1.0/home/";
+    public static final String notFoundLink = "http://localhost:8080/filemei-1.0/SomethingGoesWrong/404/";
     protected String filename;
     protected String absolutePath;
     protected String zipname;
@@ -104,6 +105,12 @@ public class FileController{
           InStream.close();
           OutStream.close();
         }
+        else{
+          response.sendRedirect(FileController.notFoundLink);
+        }
+      }
+      else{
+        response.sendRedirect(FileController.notFoundLink);
       }
     }
     

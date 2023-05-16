@@ -31,7 +31,7 @@ public class upload extends HttpServlet {
 					getServletContext().getRequestDispatcher(FileController.downloadPath).forward(request, response);
         }
         else{
-            response.sendRedirect(FileController.homePath);
+            response.sendRedirect(FileController.homeLink);
             return;
         }  
 	  }

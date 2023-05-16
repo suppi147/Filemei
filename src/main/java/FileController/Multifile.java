@@ -1,4 +1,5 @@
 package FileController;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.*;
@@ -32,5 +33,13 @@ public class Multifile extends FileController {
             }
         }
         return false;
+    }
+    public void MultifileDownload(HttpServletResponse response,String mimeType, String filename){
+        super.SetFilename(filename);
+        try {
+            super.FilemeiDownload(response, mimeType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
