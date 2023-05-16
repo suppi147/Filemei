@@ -38,15 +38,16 @@ public class FIlemeiZipper extends FileController {
                 fos = new FileOutputStream(defaultPath+zipfilename);
                 zipOut = new ZipOutputStream(new BufferedOutputStream(fos));
                 for(String filePath:filesToZip){
-                    File input = new File(filePath);
-                    fis = new FileInputStream(input);
-                    ZipEntry ze = new ZipEntry(input.getName());
+                    File fileZipping = new File(filePath);
+                    fis = new FileInputStream(fileZipping);
+                    ZipEntry ze = new ZipEntry(fileZipping.getName());
                     zipOut.putNextEntry(ze);
                     byte[] tmp = new byte[4*1024];
                     int size = 0;
                     while((size = fis.read(tmp)) != -1){
                         zipOut.write(tmp, 0, size);
                     }
+                    fileZipping.delete();
                     zipOut.flush();
                     fis.close();
                 }
