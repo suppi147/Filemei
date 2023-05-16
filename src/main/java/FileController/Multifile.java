@@ -20,14 +20,14 @@ public class Multifile {
         this.upload=new FilemeiUpload();
     }
     public String GetDownloadFilename(){
-        return this.upload.GetFilename();
+        return this.upload.filename;
     }
 
     public boolean MultifileUpload(Collection<Part> fileContainers,PrintWriter out){        
         if(!fileContainers.isEmpty()){
             for (Part fileDock : fileContainers) {
                 upload.extractFileName(fileDock);
-                if(!(upload.GetFilename().isEmpty()))
+                if(!(upload.filename.isEmpty()))
                     numberOfFile++;
                 else 
                     break;
@@ -45,7 +45,7 @@ public class Multifile {
         return false;
     }
     public void MultifileDownload(HttpServletResponse response,String mimeType, String filename){
-        download.SetFilename(filename);
+        download.filename=filename;
         try {
             download.Download(response, mimeType);
         } catch (IOException e) {

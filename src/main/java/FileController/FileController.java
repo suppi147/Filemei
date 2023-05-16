@@ -21,16 +21,6 @@ public class FileController{
         this.zipname="";
         this.downloadFile=null;
     }
-
-    public String GetFilename(){
-        return this.filename;
-    }
-    public String GetAbsolutePath(){
-        return this.absolutePath;
-    }
-    public void SetFilename(String filename){
-      this.filename=filename;
-  }
   
     
     public void extractFileName(Part part) {
