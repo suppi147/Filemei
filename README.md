@@ -20,7 +20,7 @@
 - frontend
     - add upload,down FE
 - Backend
-    - upload multifile, folder
+    - upload multifile
 ### Sample
 - upload
 ![image](https://github.com/suppi147/Filemei/assets/97881547/a1cd7f24-183e-4af5-a9e2-cbf5fefc7d15)
