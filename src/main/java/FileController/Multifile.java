@@ -1,5 +1,6 @@
 package FileController;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.*;
@@ -33,7 +34,6 @@ public class Multifile {
                 else 
                     break;
             }
-            if(numberOfFile>0){
                 for (Part FileDock : fileContainers) {
                     if(FileDock!=null){
                         upload.extractFileName(FileDock);
@@ -43,12 +43,14 @@ public class Multifile {
                 if(numberOfFile>1){
                     try {
                         this.zip.Zipper(fileContainers);
+                        this.upload.filename=this.zip.zipfilename;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                } 
+                }
+                
                 return true;
-            }     
+                 
         }
         return false;
     }

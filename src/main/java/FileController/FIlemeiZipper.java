@@ -16,11 +16,11 @@ import java.util.zip.ZipOutputStream;
 import javax.servlet.http.Part;
 
 public class FIlemeiZipper extends FileController {
-    List<String> filesToZip;
-    String zipfilename;
+    protected List<String> filesToZip;
+    protected String zipfilename;
     public FIlemeiZipper(){
         this.filesToZip=new ArrayList<String>();
-        this.zipfilename="/"+UUID.randomUUID().toString()+".zip";
+        this.zipfilename=UUID.randomUUID().toString()+".zip";
     }
     public void Zipper(Collection<Part> fileContainers) throws IOException{
         if(!fileContainers.isEmpty()){
@@ -35,7 +35,7 @@ public class FIlemeiZipper extends FileController {
             ZipOutputStream zipOut = null;
             FileInputStream fis = null;
             try {
-                fos = new FileOutputStream(defaultPath+zipfilename);
+                fos = new FileOutputStream(defaultPath+"/"+zipfilename);
                 zipOut = new ZipOutputStream(new BufferedOutputStream(fos));
                 for(String filePath:filesToZip){
                     File fileZipping = new File(filePath);
