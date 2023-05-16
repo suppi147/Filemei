@@ -23,7 +23,7 @@ public class Multifile {
         return this.upload.filename;
     }
 
-    public boolean MultifileUpload(Collection<Part> fileContainers,PrintWriter out){        
+    public boolean MultifileUpload(Collection<Part> fileContainers){        
         if(!fileContainers.isEmpty()){
             for (Part fileDock : fileContainers) {
                 upload.extractFileName(fileDock);

@@ -2,11 +2,8 @@ package FileInteraction;
 
 import FileController.FileController;
 import FileController.Multifile;
-
-
 import javax.servlet.http.HttpServlet;
 import java.io.*;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -25,8 +22,8 @@ public class upload extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Multifile multifiler= new Multifile();
-        PrintWriter out= response.getWriter();
-        if(multifiler.MultifileUpload(request.getParts(),out)){
+        //PrintWriter out= response.getWriter();
+        if(multifiler.MultifileUpload(request.getParts())){
             request.setAttribute("filename", multifiler.GetDownloadFilename());
 					getServletContext().getRequestDispatcher(FileController.downloadPath).forward(request, response);
         }
