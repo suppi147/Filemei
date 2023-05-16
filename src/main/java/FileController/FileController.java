@@ -1,7 +1,11 @@
 package FileController;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStream;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.*;
 
 
@@ -13,11 +17,14 @@ public class FileController{
     protected String filename;
     protected String absolutePath;
     protected String zipname;
+    protected File downloadFile;
+
 
     public FileController(){
         this.filename="";
         this.absolutePath="NULL PATH";
         this.zipname="";
+        this.downloadFile=null;
     }
 
     public String GetFilename(){
@@ -63,5 +70,42 @@ public class FileController{
             return false;
         }
       }
+
+    public void FilemeiDownload(HttpServletResponse response,String mimeType) throws IOException{  
+      if(!this.filename.isEmpty()){
+        this.absolutePath=this.getFolderUpload().getAbsolutePath() + File.separator + this.filename;
+          downloadFile=new File(absolutePath);
+         
+
+			// modifies response
+			  response.setContentType(mimeType);
+			  response.setContentLength((int) downloadFile.length());
+        FileInputStream InStream = new FileInputStream(downloadFile);
+            if (mimeType == null) {        
+              // set to binary type if MIME mapping not found
+              mimeType = "application/octet-stream";
+            }
+            
+        String headerKey = "Content-Disposition";
+        String headerValue = String.format("attachment; filename="+filename);
+        response.setHeader(headerKey, headerValue);
+        
+        // obtains response's output stream
+
+        
+        byte[] buffer = new byte[4096];
+        int bytesRead = -1;
+        
+        OutputStream OutStream = response.getOutputStream();
+        if(InStream!=null&&OutStream!=null){
+          while ((bytesRead = InStream.read(buffer)) != -1) {
+            OutStream.write(buffer, 0, bytesRead);
+          }
+          InStream.close();
+          OutStream.close();
+        }
+      }
+    }
+    
 }
     

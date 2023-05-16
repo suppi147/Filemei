@@ -1,9 +1,7 @@
 package FileController;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import javax.servlet.http.*;
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class Multifile extends FileController {
     protected ArrayList<String> filenamelist;

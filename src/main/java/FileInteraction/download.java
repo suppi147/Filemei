@@ -24,9 +24,6 @@ public class download extends HttpServlet {
 			File downloadFile = new File("/var/lib/tomcat9/webapps/Uploads/"+filename);
 			FileInputStream inStream = new FileInputStream(downloadFile);
 			
-			// if you want to use a relative path to context root:
-			String relativePath = getServletContext().getRealPath("");
-			System.out.println("relativePath = " + relativePath);
 			
 			// obtains ServletContext
 			ServletContext context = getServletContext();
@@ -37,7 +34,6 @@ public class download extends HttpServlet {
 				// set to binary type if MIME mapping not found
 				mimeType = "application/octet-stream";
 			}
-			System.out.println("MIME type: " + mimeType);
 			
 			// modifies response
 			response.setContentType(mimeType);
