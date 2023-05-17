@@ -7,6 +7,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import FileSecurity.FilemeiHasher;
 
 @WebServlet(name = "upload", urlPatterns = { "/upload" })
 @MultipartConfig(
@@ -24,7 +25,8 @@ public class upload extends HttpServlet {
         Multifile multifiler= new Multifile();
         
         if(multifiler.MultifileUpload(request.getParts())){
-            request.setAttribute("filename", multifiler.GetDownloadFilename());
+          String ecryptBlock= FilemeiHasher.encrypt(multifiler.GetDownloadFilename());
+            request.setAttribute("filename", ecryptBlock);
 					  getServletContext().getRequestDispatcher(FileController.downloadPath).forward(request, response);
         }
         else{
