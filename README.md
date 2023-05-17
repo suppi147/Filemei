@@ -4,17 +4,13 @@
 - Filemei is an online file upload system with time expired period.
 
 ### Ability
-- upload files, images.
-- QR link for copy.
-- interactive with noteziee
+- upload, download file
 
 ### Technology used
 - Backend
     - Java Servlet
 - Frontend
-    - JSP, CSS
-- Database
-    - MySQL
+    - JSP, CSS, Javascript
 
 ### Future development
 - frontend
