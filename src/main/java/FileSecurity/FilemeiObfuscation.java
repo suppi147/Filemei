@@ -5,7 +5,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-public class FilemeiHasher implements SecurityController {
+public class FilemeiObfuscation implements SecurityController {
     private static final String SECRET_KEY = "emoidungkhoc";
 
     public static String base64ToHex(String base64String) {

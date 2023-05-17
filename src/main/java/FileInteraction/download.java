@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import FileSecurity.FilemeiHasher;
+import FileSecurity.FilemeiObfuscation;
 
 
 @WebServlet(name = "download", urlPatterns = { "/download" })
@@ -20,7 +20,7 @@ public class download extends HttpServlet {
         // reads input file from an absolute path
 		Multifile multifiler= new Multifile();
         String encryptBlock = request.getParameter("filename");
-		String filename = FilemeiHasher.decrypt(encryptBlock);
+		String filename = FilemeiObfuscation.decrypt(encryptBlock);
 		ServletContext context = getServletContext();
 		String mimeType = context.getMimeType(filename);
 		multifiler.MultifileDownload(response, mimeType, filename);

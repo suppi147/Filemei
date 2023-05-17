@@ -1,9 +1,9 @@
-FileSecurity/FilemeiHasher.class
 FileController/Multifile.class
 FileInteraction/download.class
 FileSecurity/SecurityController.class
 FileController/FilemeiDownload.class
 FileController/FileController.class
+FileSecurity/FilemeiObfuscation.class
 FileController/FIlemeiZipper.class
 FileController/FilemeiUpload.class
 FileInteraction/upload.class
