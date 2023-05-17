@@ -14,4 +14,14 @@
     <servlet-name>FilemeiDownload</servlet-name>
     <url-pattern>/FilemeiDownload</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>download</display-name>
+    <servlet-name>download</servlet-name>
+    <servlet-class>FileInteraction.download</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>download</servlet-name>
+    <url-pattern>/download</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,2 +1,7 @@
-FIleInteraction/FilemeiUpload.class
-filemei/FilemeiDownload.class
+FileController/Multifile.class
+FileInteraction/download.class
+FileController/FilemeiDownload.class
+FileController/FileController.class
+FileController/FIlemeiZipper.class
+FileController/FilemeiUpload.class
+FileInteraction/upload.class
