@@ -16,6 +16,7 @@
 - frontend
     - botcheck
     - upload bar
+    - limit alert
 - Backend
     - file timeout
     - secure download folder
