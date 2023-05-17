@@ -39,7 +39,7 @@
   </div>
 </div>
 <footer>
-    <p style="color:#eae7e7;">Copyright <a href="https://github.com/suppi147/" style="color:#eae7e7;">suppi147</a> | All right reserved</p>
+    <p style="color:#eae7e7;">Copyright by <a href="https://github.com/suppi147/" style="color:#eae7e7;">suppi147</a> | All right reserved</p>
 </footer>
 </body>
 </html>
