@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import FileSecurity.FilemeiObfuscation;
+import FileSecurity.FilemeiTimeout;
 
 @WebServlet(name = "upload", urlPatterns = { "/upload" })
 @MultipartConfig(
@@ -23,8 +24,9 @@ public class upload extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Multifile multifiler= new Multifile();
-        
-        if(multifiler.MultifileUpload(request.getParts())){
+        FilemeiTimeout timeLimitControl=new FilemeiTimeout();
+        timeLimitControl.RemoveFileByLimit(response);
+        if(multifiler.MultifileUpload(request.getParts(),response)){
           String ecryptBlock= FilemeiObfuscation.encrypt(multifiler.GetDownloadFilename());
             request.setAttribute("filename", ecryptBlock);
 					  getServletContext().getRequestDispatcher(FileController.downloadPath).forward(request, response);
