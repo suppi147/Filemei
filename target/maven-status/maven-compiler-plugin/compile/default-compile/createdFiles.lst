@@ -1,4 +1,5 @@
 FileSecurity/FilemeiTimeout.class
+FileSecurity/FIlemeiSizeout.class
 FileController/Multifile.class
 FileInteraction/download.class
 FileSecurity/SecurityController.class

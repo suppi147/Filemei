@@ -8,15 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 public class FilemeiDownload extends FileController{
     public void Download(HttpServletResponse response,String mimeType) throws IOException{
         File[] files = new File(FileController.defaultPath).listFiles();
-        if(files.length!=0){
+        int counter=0;
+        if(files.length>0){
             for (File file : files) {
                 if (file.isFile()) {
-                    if(this.filename.equals(file.getName())){
-                        continue;
+                    if(this.filename.equals(file.getName())){                        
+                        break;
                     }
-                    else{
+                    else if(counter==files.length){
                         response.sendError(HttpServletResponse.SC_NOT_FOUND);
                     }
+                    counter++;
                 }
                 else{
                     response.sendError(HttpServletResponse.SC_NOT_FOUND);

@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import FileSecurity.FIlemeiSizeout;
 import FileSecurity.FilemeiObfuscation;
 import FileSecurity.FilemeiTimeout;
 
@@ -20,10 +22,16 @@ public class download extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         // reads input file from an absolute path
 		Multifile multifiler= new Multifile();
+		
 		FilemeiTimeout timeLimitControl=new FilemeiTimeout();
         timeLimitControl.RemoveFileByLimit(response);
-        String encryptBlock = request.getParameter("filename");
+        
+		String encryptBlock = request.getParameter("filename");
 		String filename = FilemeiObfuscation.decrypt(encryptBlock);
+
+		FIlemeiSizeout fileSizeControl= new FIlemeiSizeout();
+		fileSizeControl.FileSizeLimitter(filename);
+		
 		ServletContext context = getServletContext();
 		String mimeType = context.getMimeType(filename);
 		multifiler.MultifileDownload(response, mimeType, filename);

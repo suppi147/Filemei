@@ -24,7 +24,7 @@ public class FilemeiTimeout implements SecurityController {
 
     public void RemoveFileByLimit(HttpServletResponse response){
         try {
-            File[] files = new File(FileController.defaultPath).listFiles();
+            File[] files = new File(SecurityController.defaultPath).listFiles();
             for (File file : files) {
                 if (file.isFile()) {
                     this.filepath+=file.getName();                    
@@ -36,7 +36,7 @@ public class FilemeiTimeout implements SecurityController {
                     if(this.hours>1){    
                         this.deletefile.delete();
                     }
-                    this.filepath=FileController.defaultPath+"/";
+                    this.filepath=SecurityController.defaultPath+"/";
                 }
             }
             
