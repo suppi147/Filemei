@@ -29,9 +29,7 @@ public class download extends HttpServlet {
 		String encryptBlock = request.getParameter("filename");
 		String filename = FilemeiObfuscation.decrypt(encryptBlock);
 
-		FIlemeiSizeout fileSizeControl= new FIlemeiSizeout();
-		fileSizeControl.FileSizeLimitter(filename);
-		
+
 		ServletContext context = getServletContext();
 		String mimeType = context.getMimeType(filename);
 		multifiler.MultifileDownload(response, mimeType, filename);

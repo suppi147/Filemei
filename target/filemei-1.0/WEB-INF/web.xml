@@ -8,6 +8,10 @@
     <error-code>404</error-code>
     <location>/SomethingGoesWrong/404/index.jsp</location>
     </error-page>
+  <error-page>
+    <error-code>400</error-code>
+    <location>/SomethingGoesWrong/400/index.jsp</location>
+    </error-page>
   <servlet>
     <description></description>
     <display-name>FilemeiDownload</display-name>

@@ -7,8 +7,11 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+
+import FileSecurity.FIlemeiSizeout;
 import FileSecurity.FilemeiObfuscation;
 import FileSecurity.FilemeiTimeout;
+import FileSecurity.SecurityController;
 
 @WebServlet(name = "upload", urlPatterns = { "/upload" })
 @MultipartConfig(
@@ -27,6 +30,13 @@ public class upload extends HttpServlet {
         
         FilemeiTimeout timeLimitControl=new FilemeiTimeout();
         timeLimitControl.RemoveFileByLimit(response);
+
+        FIlemeiSizeout uploadSizer= new FIlemeiSizeout();
+        if(uploadSizer.FileSizeLimitter()){
+          response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+          return;
+
+        }
 
         if(multifiler.MultifileUpload(request.getParts(),response)){
           String ecryptBlock= FilemeiObfuscation.encrypt(multifiler.GetDownloadFilename());
