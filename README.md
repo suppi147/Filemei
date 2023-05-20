@@ -14,12 +14,12 @@
 
 ### Future development
 - frontend
-    - botcheck
-    - upload bar
     - limit alert
 - Backend
     - file timeout
     - secure download folder
 ### Sample
+limit alert
+![image](https://github.com/suppi147/Filemei/assets/97881547/bd2a1a88-7a49-44bf-98a0-35ab81aefe6f)
 
 
