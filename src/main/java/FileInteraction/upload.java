@@ -27,16 +27,15 @@ public class upload extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Multifile multifiler= new Multifile();
-        
+
+        FilemeiTimeout timeLimitControl=new FilemeiTimeout();
+        timeLimitControl.RemoveFileByLimit(response);
+
         FIlemeiSizeout uploadSizer= new FIlemeiSizeout();
         if(uploadSizer.FileSizeLimitter()){
           response.sendError(HttpServletResponse.SC_BAD_REQUEST);
           return;
         }
-        
-        FilemeiTimeout timeLimitControl=new FilemeiTimeout();
-        timeLimitControl.RemoveFileByLimit(response);
-
         
 
         if(multifiler.MultifileUpload(request.getParts(),response)){

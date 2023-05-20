@@ -2,6 +2,7 @@ FileSecurity/FilemeiTimeout.class
 FileSecurity/FIlemeiSizeout.class
 FileController/Multifile.class
 FileInteraction/download.class
+FileInteraction/LimitMiddleware.class
 FileSecurity/SecurityController.class
 FileController/FilemeiDownload.class
 FileController/FileController.class
