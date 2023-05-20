@@ -6,7 +6,29 @@ import java.io.OutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 public class FilemeiDownload extends FileController{
-    public void Download(HttpServletResponse response,String mimeType) throws IOException{  
+    public void Download(HttpServletResponse response,String mimeType) throws IOException{
+        File[] files = new File(FileController.defaultPath).listFiles();
+        int counter=0;
+        if(files.length>0){
+            for (File file : files) {
+                if (file.isFile()) {
+                    if(this.filename.equals(file.getName())){                        
+                        break;
+                    }
+                    else if(counter==files.length){
+                        response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                    }
+                    counter++;
+                }
+                else{
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+
+                }
+            }
+        }
+        else{
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
         if(!this.filename.isEmpty()){
           this.FindAbsolutePath();
             downloadFile=new File(this.absolutePath);

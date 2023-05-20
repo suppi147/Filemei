@@ -23,7 +23,7 @@
     <a href="http://localhost:8080/filemei-1.0/home/" style="text-decoration: none;">
       <h1>filemei</h1>
     </a>
-    <p>The link will be timeout in <strong>5 minutes</strong> so take your time&#9203;</p>
+    <p>The link will be timeout in <strong>1 hour</strong> so take your time&#9203;</p>
     <div>
        <!-- The text field -->
        <div class="copy-text">    
@@ -39,7 +39,7 @@
   </div>
 </div>
 <footer>
-    <p style="color:#eae7e7;">Copyright <a href="https://github.com/suppi147/" style="color:#eae7e7;">suppi147</a> | All right reserved</p>
+    <p style="color:#eae7e7;">Copyright by <a href="https://github.com/suppi147/" style="color:#eae7e7;">suppi147</a> | All right reserved</p>
 </footer>
 </body>
 </html>
