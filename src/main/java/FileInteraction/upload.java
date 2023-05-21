@@ -11,7 +11,6 @@ import javax.servlet.annotation.*;
 import FileSecurity.FIlemeiSizeout;
 import FileSecurity.FilemeiObfuscation;
 import FileSecurity.FilemeiTimeout;
-import FileSecurity.SecurityController;
 
 @WebServlet(name = "upload", urlPatterns = { "/upload" })
 @MultipartConfig(
@@ -30,6 +29,7 @@ public class upload extends HttpServlet {
 
         FilemeiTimeout timeLimitControl=new FilemeiTimeout();
         timeLimitControl.RemoveFileByLimit(response);
+        response.getWriter().println("this.lastModified");
 
         FIlemeiSizeout uploadSizer= new FIlemeiSizeout();
         if(uploadSizer.FileSizeLimitter()){
