@@ -13,6 +13,6 @@
       <i class="far fa-question-circle fa-spin"></i>
       <div class="err2">4</div>
       <div class="msg"><p>The file you looking for is not exist&#128683</p>
-        <a href="http://localhost:8080/filemei-1.0/home/"><button class="custom-btn btn-15">&#128193</button></a>
+        <a href="http://localhost/home/"><button class="custom-btn btn-15">&#128193</button></a>
       </div>
         </div>

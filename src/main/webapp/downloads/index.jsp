@@ -20,18 +20,18 @@
 <body>
 <div class="wrapper">
   <div class="container">
-    <a href="http://localhost:8080/filemei-1.0/" style="text-decoration: none;">
+    <a href="http://localhost" style="text-decoration: none;">
       <h1>filemei</h1>
     </a>
     <p>The link will be timeout in <strong>20 minutes</strong> so take your time&#9203;</p>
     <div>
        <!-- The text field -->
        <div class="copy-text">    
-        <input disabled="disabled" type="text" class="textbox" value="http://localhost:8080/filemei-1.0/download?filename=${requestScope.filename}" id="myInput">
+        <input disabled="disabled" type="text" class="textbox" value="http://localhost/download?filename=${requestScope.filename}" id="myInput">
         <button onclick="copy()" ><i class="fa fa-clone" ></i></button>
       </div>
     </div>
-    <form id="FilemeiDownload" action="http://localhost:8080/filemei-1.0/download" method="get">
+    <form id="FilemeiDownload" action="http://localhost/download" method="get">
       <input type="hidden" name="filename" value="${requestScope.filename}" >
       <button class="button-three" type="submit" form="FilemeiDownload" >Download</button>
     </form>
