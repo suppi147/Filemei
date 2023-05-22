@@ -4,7 +4,7 @@ import java.io.File;
 
 public class FIlemeiSizeout implements SecurityController {
     public static final float maxSize= 1024 * 1024 * 1024;
-    public static final float TOTAL_SIZE_LIMIT= 10;
+    public static final float TOTAL_SIZE_LIMIT= 5;
     protected String filepath;
     protected float fileLenSum;
     

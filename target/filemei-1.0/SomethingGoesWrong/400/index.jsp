@@ -13,7 +13,7 @@
       <i class="far fa-question-circle fa-spin"></i>
       <div class="err2">0</div>
       <div class="msg">
-        <p>We are so sorry for the inconvenience.<br>The server is now at it's max capacity which is <strong>10 GB</strong>.<br>
+        <p>We are so sorry for the inconvenience.<br>The server is now at it's max capacity which is <strong>5 GB</strong>.<br>
             You might wanna wait for <strong style="color:black;">20 minutes</strong> for some files to be time out&#9203<br></p>
       </div>
         </div>
