@@ -6,19 +6,20 @@ import javax.servlet.http.HttpServletResponse;
 import FileController.FileController;
 
 public class FilemeiTimeout implements SecurityController {
+    private static final int CROSSTIME=20;
     private String filepath;
     private File deletefile;
     private long lastModified;
     private long now;
     private long timeDifferent;
-    private long hours;
+    private long mins;
     public FilemeiTimeout(){
         this.filepath=FileController.defaultPath+"/";
         this.deletefile=null;
         this.lastModified=0;
         this.now=0;
         this.timeDifferent=0;
-        this.hours=0;
+        this.mins=0;
     }
 
 
@@ -31,9 +32,9 @@ public class FilemeiTimeout implements SecurityController {
                     this.lastModified=file.lastModified();
                     this.now = System.currentTimeMillis();
                     this.timeDifferent= now -lastModified;
-                    this.hours=this.timeDifferent/(1000*60*60);
+                    this.mins=this.timeDifferent/(1000*60);
                     this.deletefile = new File(this.filepath);
-                    if(this.hours>1){    
+                    if(this.mins>CROSSTIME){    
                         this.deletefile.delete();
                     }
                     this.filepath=SecurityController.defaultPath+"/";

@@ -21,6 +21,9 @@ public class FIlemeiSizeout implements SecurityController {
                 if (file.isFile()) {
                     diff=file.length()/maxSize;
                     this.fileLenSum+= diff;
+                    if(diff>1){
+                        file.delete();
+                    }
                 }                
             }
             if(this.fileLenSum>TOTAL_SIZE_LIMIT){
