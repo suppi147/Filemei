@@ -1,0 +1,17 @@
+#UBUNTU
+sudo apt update
+sudo apt upgrade
+sudo apt install tomcat9
+sudo apt install default-jdk
+sudo apt install default-jre
+sudo snap install maven
+
+#PORT
+/tomcat9/conf/server.xml 8080 -> 80
+
+#SECURITY
+generate new AES key
+new folder name
+chmod -rw folder_name
+rm .git
+
