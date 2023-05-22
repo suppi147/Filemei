@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.*;
 
+import FileSecurity.FilemeiTimeout;
+
 public class Multifile {
     protected ArrayList<String> filenamelist;
     protected int numberOfFile;
@@ -25,12 +27,16 @@ public class Multifile {
         return this.upload.filename;
     }
 
-    public boolean MultifileUpload(Collection<Part> fileContainers){        
+    public boolean MultifileUpload(Collection<Part> fileContainers,HttpServletResponse response) throws IOException{        
+        
         if(!fileContainers.isEmpty()){
             for (Part fileDock : fileContainers) {
                 upload.extractFileName(fileDock);
                 if(!(upload.filename.isEmpty()))
+                {
                     numberOfFile++;
+                }
+                    
                 else 
                     break;
             }

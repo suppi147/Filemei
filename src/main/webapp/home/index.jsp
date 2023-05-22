@@ -34,13 +34,63 @@
           <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
         </div>
           
-          <form id="FilemeiUpload" action="http://localhost:8080/filemei-1.0/upload" method="post" enctype="multipart/form-data" class="hidden">
+          <form id="FilemeiUpload" action="http://localhost/upload" method="post" enctype="multipart/form-data" class="hidden">
             <input type="file" name="fileToUpload" id="fileToUpload" multiple>
+            
+            <script>
+              
+              $('#fileToUpload').on('change', function() {
+                const fileInput = document.getElementById('fileToUpload');
+                
+                
+                var filename = this.value;
+                var lastIndex = filename.lastIndexOf("");
+                if (lastIndex >= 0) {
+                  filename = filename.substring(lastIndex + 1);
+                }
+                var files = $('#fileToUpload')[0].files;
+                for (var i = 0; i < files.length; i++) {
+                  var fileSize = (files[i].size / 1024 / 1024).toFixed(2);
+                  if (files[i].size > 1073741824) {
+                    fileInput.value='';
+                    if(i==0 && files.length==1){
+                      emptyAlertdanger("The file is larger than 1 GB &#10060",2000);
+                    }
+                    else{
+                      emptyAlertdanger("The files are larger than 1 GB &#10060",2000);
+                    }
+                  }
+                  
+                }
+                fileCount += files.length;
+                showFileCount();
+              });
+              /*$('#fileToUpload').on('change', function() {
+                const fileInput = document.getElementById('fileToUpload');
+                var numb = $(this)[0].files[0].size / 1024 / 1024 / 1024;
+                numb = numb.toFixed(1);
+                if (numb > 1) {
+                  fileInput.value='';
+                  emptyAlertdanger("The file is Larger than 1 GB &#10060",2000);
+                }
+              });*/
+              </script>
           </form>
       </div>
     </div>
     <button id="submit" class="button-two" type="submit" form="FilemeiUpload">Upload</button>
     <script>
+      function emptyAlertdanger(msg,duration)
+        {
+        var el = document.createElement("div");
+        el.setAttribute("class","alert alert-danger");
+        el.setAttribute("style","position:fixed;top:80%;left:1%;");
+        el.innerHTML = msg;
+        setTimeout(function(){
+          el.parentNode.removeChild(el);
+        },duration);
+        document.body.appendChild(el);
+        }
       function emptyAlert(msg,duration)
       {
       var el = document.createElement("div");
@@ -55,14 +105,14 @@
             document.getElementById("submit").onclick = function(e) {
       if (document.getElementById("fileToUpload").value == "") {
         e.preventDefault();
-        emptyAlert("Warning: No files uploaded!",1000);
+        emptyAlert("No files uploaded &#10060",1000);
       }
       }
     </script>
   </div>
 </div>
 <footer>
-  <p style="color:#eae7e7;">Copyright <a href="https://github.com/suppi147/" style="color:#eae7e7;">suppi147</a> | All right reserved</p>
+  <p style="color:#eae7e7;">Copyright by <a href="https://github.com/suppi147/" style="color:#eae7e7;">suppi147</a> | All right reserved</p>
 </footer>
 </body>
 </html>
