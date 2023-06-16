@@ -17,7 +17,7 @@ Filemei is an online file-storing system with fast uploading, it also provides a
 - Java Servlet 3.0
 
 ## Demo
-- I'm so sorry to announce that Filemei is currently shut down due to the lack of financial support :<. Anyway, if you still feel interested about my project, please contact me by [facebook]((https://www.facebook.com/khoi.lee.2090/)
+- I'm so sorry to announce that Filemei is currently shut down due to the lack of financial support :<. Anyway, if you still feel interested about my project, please contact me by [Le Khoi](https://www.facebook.com/khoi.lee.2090/)
 - ~~Here's a live demo of Filemei: https://filemei.noteziee.cloud~~
 ## License
 - This project is licensed under the [MIT License.](https://github.com/suppi147/Filemei/blob/main/LICENSE)
